@@ -1,5 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// Importamos el componente de la barra de busqueda SearcBar
+import SearcBar from './components/search_bar';
+
+
 
 // Creamos una constante, que va a ser la KEY DEL API de Youtube. No va a cambiar
 const API_KEY = 'AIzaSyABvZR95mHIj30vRfV0OzKhVJPSg03oYUo';
@@ -8,7 +12,11 @@ const API_KEY = 'AIzaSyABvZR95mHIj30vRfV0OzKhVJPSg03oYUo';
 // Creamos un nuevo componente que producirá cídigo HTML
 // Create a new Compoment. This Compoment should produce some HTML
 const App = function () {
-  return <div>Hi!</div>;
+  return (
+    <div>
+      <SearcBar />
+    </div>
+    );
 }
 
 
