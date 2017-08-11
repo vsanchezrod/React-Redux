@@ -1,9 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import YTSearch from 'youtube-api-search';
 // Importamos el componente de la barra de busqueda SearcBar
-import SearcBar from './components/search_bar';
+import SearchBar from './components/search_bar';
 
-
+YTSearch({key: API_KEY, termn: 'surfboards'}, function(data) {console.log(data)});
 
 // Creamos una constante, que va a ser la KEY DEL API de Youtube. No va a cambiar
 const API_KEY = 'AIzaSyABvZR95mHIj30vRfV0OzKhVJPSg03oYUo';

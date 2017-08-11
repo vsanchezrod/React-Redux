@@ -7,23 +7,25 @@ import React, {Component} from 'react';
 
 // Creo la clase
 class SearchBar extends Component {
+    // STATE
+    constructor(props){
+        super(props);
+
+        this.state = {term: ''};
+    }
+
     // Creo el metodo para el render (es como una función y devuelve código HTML)
     render (){
-        return <input onChange={(event) => console.log(event.target.value)} />;
+        return(
+            <div>
+                <input
+                    value = {this.state.term}
+                    onChange = {event => this.setState({ term: event.target.value })} />
+                    Value of the input: {this.state.term}
+            </div>
+        );
     }
-    
-    // HANDLING EVENTS (2 pasos).
-    // 1. Creo el evento, para poder saber que es lo que el usuario introduce en el buscador.
-    // 2. Paso el evento al elemento.
-    /*onInputChange(event){
-        console.log(event.target.value);
-    }*/
 
 }
-
-
-
-
-
 
 export default SearchBar;
