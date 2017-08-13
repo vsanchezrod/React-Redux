@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-
 import YTSearch from 'youtube-api-search';
-// Importamos el componente de la barra de busqueda SearcBar
 import SearchBar from './components/search_bar';
+import VideoList from './components/video_list';
 
 // Creamos una constante, que va a ser la KEY DEL API de Youtube. No va a cambiar
 const API_KEY = 'AIzaSyABvZR95mHIj30vRfV0OzKhVJPSg03oYUo';
@@ -22,8 +21,11 @@ class App extends Component {
 
   render() {
     return (
+      /* Añadimos el componente VideoList y tenemos que pasarle la informacion desde el componente padre APP al componente hijo VIDEOLIST
+      Para que salga el listado de los videos buscados. Esto se conoce como PASSING PROPS*/
       <div>
         <SearchBar />
+        <VideoList videos = {this.state.videos}/>
       </div>
     );
   }
