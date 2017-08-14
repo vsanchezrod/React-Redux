@@ -4,7 +4,9 @@ import VideoListItem from './video_list_item';
 // Se crea un componente funcional ya que no va a tener estado ni ninguna funcionalidad
 const VideoList = (props) => {
     const videoItems = props.videos.map((video) => {
-        return <VideoListItem video={video} />
+        return <VideoListItem key={video.etag} video={video} />
+        // El etag es como un identificador ÚNICO de cada video de youtube. De manera que cuando queramos actualizar un video, podamos hacerlo usando su id
+        // Y no teniendo que descartar toda la lista de videos y teniendola que crear de nuevo, lo cual sería bastante más lento.
     });
    
     

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
 import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
+import VideoDetail from './components/video_detail';
 
 // Creamos una constante, que va a ser la KEY DEL API de Youtube. No va a cambiar
 const API_KEY = 'AIzaSyABvZR95mHIj30vRfV0OzKhVJPSg03oYUo';
@@ -25,7 +26,8 @@ class App extends Component {
       Para que salga el listado de los videos buscados. Esto se conoce como PASSING PROPS*/
       <div>
         <SearchBar />
-        <VideoList videos = {this.state.videos}/>
+        <VideoDetail video= {this.state.videos[0]}/>
+        <VideoList videos= {this.state.videos}/>
       </div>
     );
   }
