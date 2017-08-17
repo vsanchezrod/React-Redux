@@ -17,7 +17,7 @@ class SearchBar extends Component {
     // Creo el metodo para el render (es como una función y devuelve código HTML)
     render (){
         return(
-            <div>
+            <div className="search-bar">
                 <input
                     value = {this.state.term}
                     onChange = {event => this.setState({ term: event.target.value })} />
