@@ -1,3 +1,6 @@
+// Instalamos una nueva dependencia (librería) LODASH y la importamos
+import _ from 'lodash';
+
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
@@ -17,8 +20,17 @@ class App extends Component {
       videos:[],
       selectedVideo: null
     };
-    
-    YTSearch({key: API_KEY, term: 'surfboards'}, (videos) => {
+
+    // Búsqueda de inicio
+    this.videoSearch('surfboards');
+
+
+  }
+
+  // Se define otro método para la búsqueda de videos en el que se mete dentro YTSearch con el término de búsqueda cambiado
+
+  videoSearch(term){
+    YTSearch({key: API_KEY, term: term}, (videos) => {
       this.setState({ 
         videos: videos,
         selectedVideo: videos[0]
@@ -26,12 +38,19 @@ class App extends Component {
     });
   }
 
+
+
   render() {
+
+    // Debounce hacer que esa función solo pueda ser llamada cada 300 milisegundos
+    const videoSearch = _.debounce((term) => {this.videoSearch(term) }, 300);
+
+
     return (
       /* Añadimos el componente VideoList y tenemos que pasarle la informacion desde el componente padre APP al componente hijo VIDEOLIST
       Para que salga el listado de los videos buscados. Esto se conoce como PASSING PROPS*/
       <div>
-        <SearchBar />
+        <SearchBar onSearchTermChange={term => this.videoSearch(term)}/>
         <VideoDetail video= {this.state.selectedVideo}/>
         <VideoList 
           //Vamos a añadir un callback para poder seleccionar los videos de la lista
